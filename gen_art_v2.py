@@ -97,9 +97,16 @@ while not quit:
         node.reflect()
         node.draw()
 
+    #O(n logn)
+    def getx(node):
+        return node.x
+    
+    nodes = sorted(nodes, key = getx)
+
+    # Takes O(n)
     for i, node1 in enumerate(nodes):
         x1, y1 = node1.x, node1.y
-        for node2 in nodes[i + 1 :]:
+        for node2 in nodes[i + 1 :i + 20]:
             x2, y2 = node2.x, node2.y
             d_squared = (x1 - x2) ** 2 + (y1 - y2) ** 2
             if d_squared < thresh:
